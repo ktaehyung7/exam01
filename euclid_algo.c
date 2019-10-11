@@ -10,10 +10,27 @@ int gcd_minus(int u, int v) {
 	return v;
 }
 
+int gcd_modulus(int u, int v) {
+	int t;
+	while(v) {
+		t = u%v;
+		u = v;
+		v = t;
+	}
+	return u;
+}
+
 void main() {
-	int result=0;
+	int num1, num2;
+	int result1=0;
+	int result2=0;
 
-	result = gcd_minus(12, 6);
-	printf("\nresult: %d\n", result);
+	printf("\nInput num1 num2: ");
+	scanf("%d %d", &num1, &num2);
 
+	result1= gcd_minus(num1, num2);
+	printf("\nresult1: %d\n", result1);
+
+	result2= gcd_modulus(num1, num2);
+	printf("\nresult2: %d\n", result2);
 }
