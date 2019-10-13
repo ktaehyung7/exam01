@@ -54,6 +54,18 @@ void print_queue(dnode* t) {
 	}	
 }
 
+void clear_queue(void) {
+	dnode *p, *s;
+	p = head->next;
+	while(p != tail) {
+		s = p;
+		p = p->next;
+		free(s);
+	}
+	head->next = tail;
+	tail->prev = head;
+}
+
 int main(int argc, char** argv) {
 	init_queue();
 
@@ -69,6 +81,11 @@ int main(int argc, char** argv) {
 	printf("\nget()....%d\n", get());
 	printf("\nget()....%d\n", get());
 	printf("\nget()....%d\n", get());
+
+	put(6);
+	put(7);
+	clear_queue();
+	print_queue(head->next);
 
 	return 1;
 }
